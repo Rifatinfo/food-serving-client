@@ -36,12 +36,12 @@ const HomePageBanner = () => {
                 onAutoplayTimeLeft={onAutoplayTimeLeft}
                 className="mySwiper"
             >
-                <SwiperSlide><img src={banner_1} alt="" /></SwiperSlide>
-                <SwiperSlide><img src={banner_2} alt="" /></SwiperSlide>
-                <SwiperSlide><img src={banner_3} alt="" /></SwiperSlide>
-                <SwiperSlide><img src={banner_4} alt="" /></SwiperSlide>
-                <SwiperSlide><img src={banner_5} alt="" /></SwiperSlide>
-                <SwiperSlide><img src={banner_6} alt="" /></SwiperSlide>
+                <SwiperSlide><img className='object-cover h-screen md:min-h-screen md:w-full' src={banner_1} alt="" /></SwiperSlide>
+                <SwiperSlide><img className='object-cover h-screen md:min-h-screen md:w-full' src={banner_2} alt="" /></SwiperSlide>
+                <SwiperSlide><img className='object-cover h-screen md:min-h-screen md:w-full' src={banner_3} alt="" /></SwiperSlide>
+                <SwiperSlide><img className='object-cover h-screen md:min-h-screen md:w-full' src={banner_4} alt="" /></SwiperSlide>
+                <SwiperSlide><img className='object-cover h-screen md:min-h-screen md:w-full' src={banner_5} alt="" /></SwiperSlide>
+                <SwiperSlide><img className='object-cover h-screen md:min-h-screen md:w-full' src={banner_6} alt="" /></SwiperSlide>
                 <div className="autoplay-progress" slot="container-end">
                     <svg viewBox="0 0 48 48" ref={progressCircle}>
                         <circle cx="24" cy="24" r="20"></circle>

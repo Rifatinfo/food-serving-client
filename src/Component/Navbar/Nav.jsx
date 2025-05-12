@@ -1,6 +1,8 @@
 import { RiMenuAddFill } from "react-icons/ri";
 import { IoClose } from "react-icons/io5";
 import { FaShoppingBag } from "react-icons/fa";
+import { IoMenu } from "react-icons/io5";
+
 import { useState } from "react";
 
 const Nav = () => {
@@ -24,7 +26,7 @@ const Nav = () => {
                 </div>
 
                 {/* Desktop Menu */}
-                <ul className="hidden md:flex items-center gap-8 text-lg">
+                <ul className="hidden md:flex items-center gap-8 ">
                     {Links.map((link, index) => (
                         <li key={index}>
                             <a href={link.link} className="hover:text-gray-400 transition">{link.name}</a>
@@ -41,7 +43,7 @@ const Nav = () => {
 
                 {/* Mobile Menu Toggle */}
                 <div onClick={() => setOpen(true)} className="md:hidden text-3xl cursor-pointer">
-                    <RiMenuAddFill />
+                    <IoMenu/>
                 </div>
             </div>
 
@@ -56,7 +58,7 @@ const Nav = () => {
                     </button>
                 </div>
 
-                <ul className="flex flex-col items-start px-6 gap-6 text-lg">
+                <ul className="flex flex-col items-start px-6 gap-6 ">
                     {Links.map((link, index) => (
                         <li key={index}>
                             <a href={link.link} onClick={() => setOpen(false)} className="hover:text-gray-400 transition">{link.name}</a>
@@ -70,7 +72,7 @@ const Nav = () => {
                         <sup>+12</sup>
                     </li>
                     <li>
-                        <a href="/login" onClick={() => setOpen(false)} className="hover:text-gray-400 transition">Login</a>
+                        <a href="/login" onClick={() => setOpen(false)} className="hover:text-gray-400 transition">Sign In</a>
                     </li>
                 </ul>
             </div>
