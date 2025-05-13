@@ -24,7 +24,15 @@ const MenuCategory = () => {
                     <div className="tab-content mt-8"><div className="grid gap-2 grid-cols-1 md:grid-cols-4 md:gap-3"> {popular.map(item => <FoodMenuCart item={item} key={item._id}></FoodMenuCart>)}</div></div>
 
                     <input type="radio" name="my_tabs_2" className="tab text-xl text-black" aria-label="salad" defaultChecked />
-                    <div className="tab-content  mt-8"><div className="grid gap-2 grid-cols-1 md:grid-cols-4 md:gap-3"> {salad.map(item => <FoodMenuCart item={item} key={item._id}></FoodMenuCart>)}</div></div>
+                    <div className="tab-content  mt-8">
+                        <div className="grid gap-2 grid-cols-1 md:grid-cols-4 md:gap-3"> 
+                            {salad.map(item => <FoodMenuCart item={item} key={item._id}></FoodMenuCart>)}
+                            </div>
+                        {/* pagination */}
+                        <div className="text-center">
+                            <p>pagination</p>
+                        </div>
+                            </div>
 
                     <input type="radio" name="my_tabs_2" className="tab text-xl text-black" aria-label="drinks" />
                     <div className="tab-content  mt-8"><div className="grid gap-2 grid-cols-1 md:grid-cols-4 md:gap-3"> {offered.map(item => <FoodMenuCart item={item} key={item._id}></FoodMenuCart>)}</div></div>
