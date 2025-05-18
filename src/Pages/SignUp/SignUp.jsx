@@ -1,6 +1,8 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../provider/AuthProvider";
+import { Navigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const SignUp = () => {
     const { createUser, signInWithGoogle } = useContext(AuthContext);
@@ -21,6 +23,7 @@ const SignUp = () => {
                     draggable: true
                 });
                 console.log(result.user);
+                Navigate('/');
             })
     }
 

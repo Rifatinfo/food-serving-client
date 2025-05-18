@@ -1,6 +1,7 @@
 
 const MenuItemCart = ({ item }) => {
     const { name, image, price, recipe } = item;
+   
     return (
         <div>
             <div className="md:flex md:space-x-4">

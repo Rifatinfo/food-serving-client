@@ -6,10 +6,12 @@ import { IoMenu } from "react-icons/io5";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import Swal from "sweetalert2";
+import useCard from "../../hooks/useCard";
 
 const Nav = () => {
     const [open, setOpen] = useState(false);
     const { user, logOut } = useContext(AuthContext);
+    const [card] = useCard(); 
     const Links = [
         { name: 'Home', link: '/' },
         { name: 'Our Menu', link: '/menu' },
@@ -44,7 +46,7 @@ const Nav = () => {
                     ))}
                     <li className="flex items-center gap-1">
                         <FaShoppingBag />
-                        <sup>+12</sup>
+                        <sup>+{card.length}</sup>
                     </li>
                     {
                         user ? <><li>
@@ -85,7 +87,7 @@ const Nav = () => {
                     ))}
                     <li className="flex items-center gap-1">
                         <FaShoppingBag />
-                        <sup>+12</sup>
+                        <sup>+{card.length}</sup>
                     </li>
                     {
                         user ? <><li>

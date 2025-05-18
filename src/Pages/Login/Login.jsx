@@ -24,12 +24,14 @@ const Login = () => {
                     icon: "success",
                     draggable: true
                 });
-                navigate(from , {replace : true});
+                // navigate(from , {replace : true});
+                navigate('/');
             })
             .catch(err => {
                 console.log(err.message);
             })
     }
+    
 
 
     return (
