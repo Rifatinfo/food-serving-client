@@ -3,11 +3,13 @@ import { IoClose } from "react-icons/io5";
 import { FaShoppingBag } from "react-icons/fa";
 import { IoMenu } from "react-icons/io5";
 
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const Nav = () => {
     const [open, setOpen] = useState(false);
-
+    const { user, logOut } = useContext(AuthContext);
     const Links = [
         { name: 'Home', link: '/' },
         { name: 'Our Menu', link: '/menu' },
@@ -15,7 +17,15 @@ const Nav = () => {
     ];
 
     const handleSignOut = () => {
-        // Add sign-out logic here
+        logOut()
+            .then(() => {
+                Swal.fire({
+                    title: "Log Out Successfully!",
+                    icon: "success",
+                    draggable: true
+                });
+            })
+            .catch(error => console.log(error))
     };
 
     return (
@@ -36,14 +46,23 @@ const Nav = () => {
                         <FaShoppingBag />
                         <sup>+12</sup>
                     </li>
-                    <li>
-                        <a href="/login" className="hover:text-gray-400 transition">Sign In</a>
-                    </li>
+                    {
+                        user ? <><li>
+                            <button onClick={() => { handleSignOut(); setOpen(false); }} className="hover:text-gray-400 transition">Sign out</button>
+                        </li></> : <>
+                            <li>
+                                <a href="/sign-in" className="hover:text-gray-400 transition">Sign In</a>
+                            </li>
+                            <li>
+                                <a href="/sign-up" onClick={() => setOpen(false)} className="hover:text-gray-400 transition">Sign Up</a>
+                            </li>
+                        </>
+                    }
                 </ul>
 
                 {/* Mobile Menu Toggle */}
                 <div onClick={() => setOpen(true)} className="md:hidden text-3xl cursor-pointer">
-                    <IoMenu/>
+                    <IoMenu />
                 </div>
             </div>
 
@@ -64,16 +83,22 @@ const Nav = () => {
                             <a href={link.link} onClick={() => setOpen(false)} className="hover:text-gray-400 transition">{link.name}</a>
                         </li>
                     ))}
-                    <li>
-                        <button onClick={() => { handleSignOut(); setOpen(false); }} className="hover:text-gray-400 transition">Sign out</button>
-                    </li>
                     <li className="flex items-center gap-1">
                         <FaShoppingBag />
                         <sup>+12</sup>
                     </li>
-                    <li>
-                        <a href="/login" onClick={() => setOpen(false)} className="hover:text-gray-400 transition">Sign In</a>
-                    </li>
+                    {
+                        user ? <><li>
+                            <button onClick={() => { handleSignOut(); setOpen(false); }} className="hover:text-gray-400 transition">Sign out</button>
+                        </li></> : <>
+                            <li>
+                                <a href="/sign-in" className="hover:text-gray-400 transition">Sign In</a>
+                            </li>
+                            <li>
+                                <a href="/sign-up" onClick={() => setOpen(false)} className="hover:text-gray-400 transition">Sign Up</a>
+                            </li>
+                        </>
+                    }
                 </ul>
             </div>
         </nav>
