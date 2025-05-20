@@ -6,6 +6,8 @@ import Root from "../Root/Root";
 import ErrorPage from "../Pages/ErrorPage";
 import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/SignUp/SignUp";
+import Dashboard from "../layout/Dashboard";
+import Cart from "../Pages/Dashboard/Cart/Cart";
 
 const router = createBrowserRouter([
     {
@@ -27,6 +29,16 @@ const router = createBrowserRouter([
             },
         ],
     },
+    {
+        path :"dashboard",
+        element : <Dashboard/>,
+        children : [
+            {
+                path : 'card',
+                element : <Cart/>
+            }
+        ]
+    }
 ]);
 
 export default router;

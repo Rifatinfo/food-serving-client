@@ -7,11 +7,12 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import Swal from "sweetalert2";
 import useCard from "../../hooks/useCard";
+import { Link } from "react-router-dom";
 
 const Nav = () => {
     const [open, setOpen] = useState(false);
     const { user, logOut } = useContext(AuthContext);
-    const [card] = useCard(); 
+    const [card] = useCard();
     const Links = [
         { name: 'Home', link: '/' },
         { name: 'Our Menu', link: '/menu' },
@@ -44,10 +45,12 @@ const Nav = () => {
                             <a href={link.link} className="hover:text-gray-400 transition">{link.name}</a>
                         </li>
                     ))}
-                    <li className="flex items-center gap-1">
-                        <FaShoppingBag />
-                        <sup>+{card.length}</sup>
-                    </li>
+                    <Link to="/dashboard/card">
+                        <li className="flex items-center gap-1">
+                            <FaShoppingBag />
+                            <sup>+{card.length}</sup>
+                        </li>
+                    </Link>
                     {
                         user ? <><li>
                             <button onClick={() => { handleSignOut(); setOpen(false); }} className="hover:text-gray-400 transition">Sign out</button>
@@ -85,10 +88,12 @@ const Nav = () => {
                             <a href={link.link} onClick={() => setOpen(false)} className="hover:text-gray-400 transition">{link.name}</a>
                         </li>
                     ))}
-                    <li className="flex items-center gap-1">
-                        <FaShoppingBag />
-                        <sup>+{card.length}</sup>
-                    </li>
+                    <Link to="/dashboard/card">
+                        <li className="flex items-center gap-1">
+                            <FaShoppingBag />
+                            <sup>+{card.length}</sup>
+                        </li>
+                    </Link>
                     {
                         user ? <><li>
                             <button onClick={() => { handleSignOut(); setOpen(false); }} className="hover:text-gray-400 transition">Sign out</button>
