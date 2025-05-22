@@ -3,8 +3,10 @@ import { useForm } from "react-hook-form";
 import { AuthContext } from "../../provider/AuthProvider";
 import { Navigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import uesAxiosPublic from "../../hooks/uesAxiosPublic";
 
 const SignUp = () => {
+    const axiosPublic = uesAxiosPublic();
     const { createUser, signInWithGoogle } = useContext(AuthContext);
     const {
         register,
@@ -17,13 +19,23 @@ const SignUp = () => {
         console.log(data)
         createUser(data.email, data.password)
             .then(result => {
-                Swal.fire({
-                    title: "Successfully Register!",
-                    icon: "success",
-                    draggable: true
-                });
-                console.log(result.user);
-                Navigate('/');
+                const userInfo = {
+                    email: data.email,
+                    password: data.password
+                }
+                axiosPublic.post('/users', userInfo)
+                    .then(res => {
+                        if (res.data.insertedId) {
+                            Swal.fire({
+                                title: "Successfully Register! & User add database",
+                                icon: "success",
+                                draggable: true
+                            });
+                            console.log(result.user);
+                            Navigate('/');
+                        }
+                    })
+
             })
     }
 
