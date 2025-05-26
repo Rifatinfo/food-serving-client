@@ -3,10 +3,11 @@ import { NavLink, Outlet } from "react-router-dom";
 import useCard from "../hooks/useCard";
 import { FaBookBible } from "react-icons/fa6";
 import { MdDelete } from "react-icons/md";
+import useAdmin from "../hooks/useAdmin";
 
 const Dashboard = () => {
     const [card] = useCard();
-    const isAdmin = true;
+    const [isAdmin] = useAdmin();
     return (
         <div className="flex">
             <div className="w-64 min-h-screen bg-orange-400">
