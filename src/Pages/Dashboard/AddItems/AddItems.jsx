@@ -1,16 +1,21 @@
 import { useForm } from "react-hook-form"
-import axios from "axios";
 import uesAxiosPublic from "../../../hooks/uesAxiosPublic";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
 const AddItems = () => {
     const axiosPublic = uesAxiosPublic();
+    const axiosSecure = useAxiosSecure();
     const {
         register,
         handleSubmit,
+        reset
     } = useForm()
 
 
     const onSubmit = async (data) => {
+        console.log(data);
+
         const image_hosting_api = `https://api.imgbb.com/1/upload?key=3803c18a2c0ecfe8a7f09c848fcc3742`;
         const imageFile = new FormData();
         imageFile.append("image", data.image[0]);
@@ -20,6 +25,27 @@ const AddItems = () => {
             },
         });
         console.log("Image uploaded:", res.data);
+
+        if (res.data.success) {
+            const menuItem = {
+                price: data.price,
+                recipe: data.recipe,
+                recipeDetails: data.recipeDetails,
+                imageUrl: res.data.data.display_url
+            }
+
+            const menuRes = await axiosSecure.post('/menu', menuItem)
+            console.log(menuRes.data);
+            if (menuRes.data.insertedId) {
+                reset();
+                // success toast 
+                Swal.fire({
+                    title: `Successful ${data.recipe} Added!`,
+                    icon: "success",
+                    draggable: true
+                });
+            }
+        }
     };
     return (
         <div className="px-4">
@@ -48,7 +74,7 @@ const AddItems = () => {
                             <label htmlFor="">Price*</label>
                             <input
                                 {...register("price")}
-                                type="text"
+                                type="number"
                                 placeholder="Type here"
                                 className="input w-full"
                             />
