@@ -26,7 +26,7 @@ const Dashboard = () => {
                                 </NavLink>
                             </li>
                             <li>
-                                <NavLink to="/dashboard/reservation" className="flex items-center gap-2 text-lg font-semibold text-white">
+                                <NavLink to="/dashboard/manageItem" className="flex items-center gap-2 text-lg font-semibold text-white">
                                     <FaList />
                                     Manage Item
                                 </NavLink>

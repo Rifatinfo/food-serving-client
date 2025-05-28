@@ -73,9 +73,8 @@ const AllUsers = () => {
     return (
         <div>
             <div>
-                <div className="flex justify-between items-center mt-4">
-                    <h2 className="md:text-4xl text-xl font-semibold">Total User : </h2>
-                    <h2 className="md:text-4xl text-xl font-semibold">Total Price : </h2>
+                <div className="flex justify-center items-center mt-4">
+                    <h2 className="md:text-4xl text-xl font-semibold text-center">All Users</h2>
                 </div>
 
                 {/* all add to cart */}

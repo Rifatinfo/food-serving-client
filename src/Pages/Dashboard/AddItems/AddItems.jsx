@@ -28,10 +28,11 @@ const AddItems = () => {
 
         if (res.data.success) {
             const menuItem = {
+                name : data.name,
                 price: data.price,
                 recipe: data.recipe,
                 recipeDetails: data.recipeDetails,
-                imageUrl: res.data.data.display_url
+                image: res.data.data.display_url
             }
 
             const menuRes = await axiosSecure.post('/menu', menuItem)
@@ -58,6 +59,10 @@ const AddItems = () => {
                 <form onSubmit={handleSubmit(onSubmit)} className="mt-10">
                     <div>
                         <label>Recipe name*</label>
+                        <input  {...register("name")} type="text" placeholder="Type here" className="input w-full" />
+                    </div>
+                    <div>
+                        <label>Recipe Item*</label>
                         <input  {...register("recipe")} type="text" placeholder="Type here" className="input w-full" />
                     </div>
                     <div className="flex  gap-2 md:flex-row   md:gap-4 mt-2">
