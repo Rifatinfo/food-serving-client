@@ -3,6 +3,7 @@ import useCard from "../../../hooks/useCard";
 import { MdDelete } from "react-icons/md";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
     const [card, refetch] = useCard();
@@ -50,12 +51,14 @@ const Cart = () => {
             }
         });
     }
+
+
     return (
         <div>
             <div className="flex items-center gap-2 justify-evenly mt-4">
                 <h2 className="text-4xl">Item : {card.length}</h2>
                 <h2 className="text-4xl">Total Price : {totalPrice}</h2>
-                <h2 className="btn px-6 py-2 text-center text-white bg-orange-400">Pay</h2>
+                <Link  to={card.length ? '/dashboard/payment' : '#'}><h2 disabled={card.length === 0} className="btn px-6 py-2 text-center text-white bg-orange-400 disabled:opacity-50 disabled:cursor-not-allowed">Pay</h2></Link>
             </div>
 
             <div>
